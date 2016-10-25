@@ -170,9 +170,6 @@ return [
         //
         Barryvdh\Cors\ServiceProvider::class,
 
-        // Usually only add this in development mode but this is a small project so is fine
-        Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class,
-
 
 
         /*
