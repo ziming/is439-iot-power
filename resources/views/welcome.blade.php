@@ -63,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        {!! Charts::assets() !!}
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -74,8 +75,10 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div>
+                    <h3>Laravel Chart Package Testing: Replace it with your AmCharts</h3>
+                    <h4>https://github.com/ConsoleTVs/Charts</h4>
+                    {!! $chart1->render() !!}
                 </div>
 
                 <div class="links">

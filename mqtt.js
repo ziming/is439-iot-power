@@ -21,8 +21,8 @@ var mqtt_connect_config = {
 
     // these 2 are only needed if the broker is not MQTT 3.1.1 compliant.
     // I only include them to play safe.
-    protocolId: 'MQIsdp',
-    protocolVersion: 3
+    // protocolId: 'MQIsdp',
+    // protocolVersion: 3
 };
 
 var mqtt = require('mqtt');

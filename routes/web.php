@@ -11,6 +11,16 @@
 |
 */
 
+use ConsoleTVs\Charts\Charts;
+
 Route::get('/', function () {
-    return view('welcome');
+
+    $chart1 = Charts::create('line', 'highcharts')
+        ->setTitle('My nice chart')
+        ->setLabels(['First', 'Second', 'Third'])
+        ->setValues([5, 10, 20])
+        ->setDimensions(1000, 500)
+        ->setResponsive(true);
+
+    return view('welcome', compact('chart1', 'chart2'));
 });
