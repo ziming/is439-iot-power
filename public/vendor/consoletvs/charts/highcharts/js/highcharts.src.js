@@ -115,11 +115,11 @@
     function error(code, stop) {
         var msg = 'Highcharts error #' + code + ': www.highcharts.com/errors/' + code;
         if (stop) {
-            throw new Error(msg);
+            throw new Error(message);
         }
         // else ...
         if (win.console) {
-            console.log(msg); // eslint-disable-line no-console
+            console.log(message); // eslint-disable-line no-console
         }
     }
 
