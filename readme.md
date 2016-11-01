@@ -1,27 +1,91 @@
-# Laravel PHP Framework
+# IS439 BigBelly Singapore Smartbin Power Monitoring App
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Setup Instructions
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+### Mac Setup for Loc
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+#### Install Homebrew and update it
 
-## Official Documentation
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+brew update
 
-## Contributing
+#### Install PHP 7.0
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+brew install homebrew/php/php70
 
-## Security Vulnerabilities
+#### Install and update composer
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
-## License
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+php composer-setup.php
+
+php -r "unlink('composer-setup.php');"
+
+#### Install Valet via Composer
+
+composer global require laravel/valet
+
+valet install
+
+#### Install & run Mysql
+
+Mariadb is a varian of mysql so it works too.
+
+brew install mariadb
+
+brew services start mariadb
+
+#### Create database called is439
+
+mysql -u root -p
+
+CREATE DATABASE is439;
+
+#### [Optional] Install PHPStorm and get a free student account.
+
+It makes Laravel development much easier
+
+https://www.jetbrains.com/phpstorm/
+
+https://www.jetbrains.com/student/
+
+#### Go to your PHPStorm projects folder and run the following command
+
+git clone git@github.com:ziming/is439-iot-power.git
+
+#### Go into that git repo folder and run the following
+
+composer install or composer update
+
+npm install // Assuming you had nodejs installed already
+
+#### Go back to your PHPStorms projects folder and run
+
+valet park
+
+That command will monitor all your laravel project folders and then 
+can be accessible via say http://is439-iot-power.dev
+
+You only need to do it once.
+
+#### Go back into the is439-iot-power folder
+
+run node mqtt.js to run the mqtt subscriber
+
+
+#### Should be finished!
+
+Play with the app. The API routes are accessible at routes/api.php
+
+More questions you can ask me here.
+
+### Deploying to my digital Ocean Server
+
+Message me.
+
+
+
+
