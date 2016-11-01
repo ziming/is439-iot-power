@@ -84,8 +84,38 @@ More questions you can ask me here.
 
 ### Deploying to my digital Ocean Server
 
-Message me.
+1. Message me for the ssh keys
+2. Put them in your ~/.ssh folder
+3. Create a file named "config" in ~/.ssh folder
 
+Paste the following into your config file.
+
+Host is439-admin
+	HostName 139.59.238.27
+	User is439admin
+	IdentitiesOnly yes
+	IdentityFile ~/.ssh/id_is439
+
+Host is439-app
+	HostName 139.59.238.27
+	User is439user
+	IdentitiesOnly yes
+	IdentityFile ~/.ssh/id_is439
+	
+
+4. ssh is439-admin to login as is439admin with sudo rights
+5. ssh is439-app to login as is439user as normal user
+6. To deploy latest code to server
+7. ssh is439-app
+8. cd is439app.com/current/repo
+9. git pull
+10. composer update
+
+Site should be accessible via either 1 of the following links
+
+is439app.139.59.238.27.xip.io
+
+is439app.139.59.238.27.nip.io
 
 
 
