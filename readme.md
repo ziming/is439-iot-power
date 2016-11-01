@@ -117,5 +117,17 @@ is439app.139.59.238.27.xip.io
 
 is439app.139.59.238.27.nip.io
 
+### Restart MQTT Subscriber
+
+Currently on production server I used Forever to monitor and restart the mqtt subscriber if it ever went down.
+
+But in case it went down and can't recover do this:
+
+1. ssh is439-admin
+2. Run this command
+
+sudo forever start -l /var/log/forever/forever.log -a \
+-o /var/log/webhook/out.log -e /var/log/webhook/error.log \
+--sourceDir /home/is439user/is439app.com/current/repo mqtt.js
 
 
