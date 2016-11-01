@@ -78,6 +78,18 @@ run node mqtt.js to run the mqtt subscriber
 
 #### Should be finished!
 
+Oh wait create the database tables and seed the tables
+
+php artisan migrate --seed
+
+and subsequently if you update your database tables
+
+php artisan migrate:refresh --seed
+
+if you meet some errors in your laravel development sometimes this command fixes things
+
+composer dump-autoload
+
 Play with the app. The API routes are accessible at routes/api.php
 
 More questions you can ask me here.
