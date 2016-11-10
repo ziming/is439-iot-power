@@ -51,10 +51,10 @@ client.on('connect', function () { // When connected
                 // power_sensor_id,measurement_taken_datetime,amp_value
                 var power_sensor_log = {
                     power_sensor_id: message[0],
-                    measurement_taken_datetime: message[1],
-                    amp_value: message[2],
-                    created_at: message[1],
-                    updated_at: message[1]
+                    amp_value: message[1],
+                    measurement_taken_datetime: message[2],
+                    created_at: message[2],
+                    updated_at: message[2]
                 };
 
                 connection.query('INSERT INTO power_sensor_logs SET ?', power_sensor_log, function (err, result) {
