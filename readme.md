@@ -138,8 +138,8 @@ But in case it went down and can't recover do this:
 1. ssh is439-admin
 2. Run this command
 
-sudo forever start -l /var/log/forever/forever.log -a \
--o /var/log/webhook/out.log -e /var/log/webhook/error.log \
---sourceDir /home/is439user/is439app.com/current/repo mqtt.js
+ sudo forever start -l /var/log/forever/forever.log \
+> -a -o /var/log/webhook/out.log -e /var/log/webhook/error.log \
+> --sourceDir /home/is439user/is439app.com/current/repo mqtt.js
 
 
