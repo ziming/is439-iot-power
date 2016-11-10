@@ -96,7 +96,7 @@ More questions you can ask me here.
 
 ### Deploying to my digital Ocean Server
 
-1. Message me for the ssh keys
+1. Message me for the ssh keys [This has not happened yet]
 2. Put them in your ~/.ssh folder
 3. Create a file named "config" in ~/.ssh folder
 

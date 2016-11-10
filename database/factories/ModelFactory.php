@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\PowerSensor::class, function (Faker\Generator $faker) {
     return [
-        'name' =>  $faker->company,
+        'name' => $faker->unique()->company,
         'port' =>  $faker->randomElement(['D1', 'D2', 'D3', 'D4']),
         'smart_bin_id' =>  function () {
 //             return factory(App\SmartBin::class)->create()->id;

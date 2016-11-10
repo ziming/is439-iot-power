@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePowerSensorsTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreatePowerSensorsTable extends Migration
     {
         Schema::create('power_sensors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
 
             // which raspberry pi port
             $table->string('port');
