@@ -34,19 +34,15 @@ $factory->define(App\PowerSensor::class, function (Faker\Generator $faker) {
 
 $factory->define(App\PowerSensorLog::class, function (Faker\Generator $faker) {
     return [
-        'power_sensor_id' =>  function () {
-//             return factory(App\PowerSensor::class)->create()->id;
-            return rand(1, 50);
-        } ,
-
-        'measurement_taken_datetime' =>  $faker->dateTimeBetween('-1 years', 'now') ,
-        'amp_value' =>  $faker->randomNumber() ,
+        'power_sensor_id' => rand(1, 50),
+        'measurement_taken_datetime' => $faker->dateTimeBetween('-1 years', 'now'),
+        'amp_value' => $faker->randomNumber()
     ];
 });
 
 $factory->define(App\SmartBin::class, function (Faker\Generator $faker) {
     return [
-        'name' =>  $faker->company ,
+        'name' => $faker->unique()->company,
         'latitude' =>  $faker->latitude ,
         'longitude' =>  $faker->longitude ,
     ];

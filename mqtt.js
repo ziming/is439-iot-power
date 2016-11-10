@@ -16,7 +16,7 @@ var options = {
 // mysql related
 var mysql = require('mysql');
 var pool = mysql.createPool({
-    connectionLimit: 2, // The max number of connections to create at once. (Default: 10)
+    connectionLimit: 1, // The max number of connections to create at once. (Default: 10)
     host: '127.0.0.1',
     user: 'root', // just a demo
     password: 'root', // just a demo
