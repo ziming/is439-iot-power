@@ -9,7 +9,7 @@ class PowerSensorLogTransformer extends Transformer
         return [
             'id' => (int) $smartBin->id,
             'power_sensor_id' => (int) $smartBin->power_sensor_id,
-            'amp_value' => (int) $smartBin->amp_value,
+            'amp_value' => (double)$smartBin->amp_value,
             'measurement_taken_datetime' => $smartBin->measurement_taken_datetime,
         ];
     }

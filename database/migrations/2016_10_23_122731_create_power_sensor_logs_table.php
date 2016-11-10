@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePowerSensorLogsTable extends Migration
 {
@@ -21,8 +21,7 @@ class CreatePowerSensorLogsTable extends Migration
 
             $table->timestamp('measurement_taken_datetime');
 
-            $table->integer('amp_value');
-
+            $table->decimal('amp_value', 8, 4);
 
             $table->timestamps();
         });
