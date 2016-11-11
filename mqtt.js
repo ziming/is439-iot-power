@@ -51,7 +51,7 @@ client.on('connect', function () { // When connected
                 // "2016-09-19 20:15:03"
                 var timestamp = Number(message[2]) * 1000
                 var datetime = new Date(timestamp).toISOString().slice(0, 19).replace('T', ' ');
-
+                // console.log(datetime);
                 // power_sensor_id,measurement_taken_datetime,amp_value
                 var power_sensor_log = {
                     power_sensor_id: message[0],
