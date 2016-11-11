@@ -33,7 +33,7 @@ client.on('connect', function () { // When connected
         // when a message arrives, do something with it
         client.on('message', function (topic, message, packet) {
 
-            message = message.toString();
+            message = message.toString().trim();
 
             if (message.length > 1) {
                 message = message.split(',');
