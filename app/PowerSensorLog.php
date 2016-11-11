@@ -15,6 +15,17 @@ class PowerSensorLog extends Model
         'power_sensor_id', 'amp_value', 'measurement_taken_datetime'
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'measurement_taken_datetime'
+    ];
+
     public function powerSensor() {
         return $this->belongsTo(PowerSensor::class);
     }

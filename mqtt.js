@@ -48,13 +48,17 @@ client.on('connect', function () { // When connected
 
                 // Use the connection
 
+                // "2016-09-19 20:15:03"
+                var timestamp = Number(message[2]) * 1000
+                var datetime = new Date(timestamp).toISOString().slice(0, 19).replace('T', ' ');
+
                 // power_sensor_id,measurement_taken_datetime,amp_value
                 var power_sensor_log = {
                     power_sensor_id: message[0],
                     amp_value: message[1],
-                    measurement_taken_datetime: message[2],
-                    created_at: message[2],
-                    updated_at: message[2]
+                    measurement_taken_datetime: datetime,
+                    created_at: datetime,
+                    updated_at: datetime
                 };
 
                 connection.query('INSERT INTO power_sensor_logs SET ?', power_sensor_log, function (err, result) {
