@@ -23,6 +23,19 @@ class PowerSensorLogsController extends ApiController
         //return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
     }
 
+    public function indexByKwH($date)
+    {
+
+        #date = '2016-12-31'
+
+        $powerSensorLogs = PowerSensorLog::whereDate('measurement_taken_datetime', $date);
+
+        // group by hour
+
+        // average
+
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
