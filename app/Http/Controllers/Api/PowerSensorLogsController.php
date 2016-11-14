@@ -28,7 +28,7 @@ class PowerSensorLogsController extends ApiController
 
         #date = '2016-12-31'
 
-        $powerSensorKwHLogs = \DB::select('SELECT power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, AVG(amp_value) AS avg_amp_value FROM power_sensor_logs GROUP BY power_sensor_id, DATE(measurement_taken_datetime), HOUR(measurement_taken_datetime) ORDER BY DATE(measurement_taken_datetime), HOUR(measurement_taken_datetime) DESC;');
+        $powerSensorKwHLogs = \DB::select('SELECT power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, (AVG(amp_value) * 11 / 1000) AS KwH FROM power_sensor_logs GROUP BY power_sensor_id, measurement_taken_date, measurement_taken_hour ORDER BY measurement_taken_date, measurement_taken_hour DESC;');
         $powerSensorKwHLogs = collect($powerSensorKwHLogs);
         return response()->json($powerSensorKwHLogs);
         //return $this->respond(fractal()->collection($powerSensorKwHLogs), $this->powerSensorLogTransformer);
