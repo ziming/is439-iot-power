@@ -24,6 +24,7 @@ Route::get('/power-sensors', 'Api\PowerSensorsController@index');
 Route::get('/power-sensors/{id}', 'Api\PowerSensorsController@show');
 
 Route::get('/power-sensors/{power_sensor_id}/logs', 'Api\PowerSensorLogsController@show');
+Route::get('/power-sensors/{power_sensor_id}/kwh-logs', 'Api\PowerSensorLogsController@showByKwH');
 
 Route::get('/power-sensor-logs', 'Api\PowerSensorLogsController@index');
 Route::get('/power-sensor-logs/latest', 'Api\PowerSensorLogsController@latest');
