@@ -23,4 +23,5 @@ Route::get('/', function () {
         ->setResponsive(true);
 
     return view('welcome', compact('chart1', 'chart2'));
+
 });

@@ -4,13 +4,13 @@ namespace App\Transformers;
 class PowerSensorTransformer extends Transformer
 {
 
-    public function transform($smartBin)
+    public function transform($powerSensor)
     {
         return [
-            'id' => (int) $smartBin->id,
-            'name' => $smartBin->name,
-            'port' => $smartBin->port,
-            'smart_bin_id' => (int) $smartBin->smart_bin_id,
+            'id' => (int)$powerSensor->id,
+            'name' => $powerSensor->name,
+            'port' => $powerSensor->port,
+            'smart_bin_id' => (int)$powerSensor->smart_bin_id,
         ];
     }
 }
