@@ -10,8 +10,6 @@ class PowerSensorLogsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\PowerSensorLog::class, 100)->create([
-            'power_sensor_id' => rand(1, 3),
-        ]);
+        factory(App\PowerSensorLog::class, 100)->create();
     }
 }
