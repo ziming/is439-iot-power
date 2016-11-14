@@ -23,17 +23,15 @@ class PowerSensorLogsController extends ApiController
         //return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
     }
 
-    public function indexByKwH($date)
+    public function indexByKwH()
     {
 
         #date = '2016-12-31'
 
-        $powerSensorLogs = PowerSensorLog::whereDate('measurement_taken_datetime', $date);
-
-        // group by hour
-
-        // average
-
+        $powerSensorKwHLogs = \DB::select('SELECT power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, AVG(amp_value) AS avg_amp_value FROM power_sensor_logs GROUP BY power_sensor_id, DATE(measurement_taken_datetime), HOUR(measurement_taken_datetime) ORDER BY DATE(measurement_taken_datetime), HOUR(measurement_taken_datetime) DESC;');
+        $powerSensorKwHLogs = collect($powerSensorKwHLogs);
+        return response()->json($powerSensorKwHLogs);
+        //return $this->respond(fractal()->collection($powerSensorKwHLogs), $this->powerSensorLogTransformer);
     }
 
     /**

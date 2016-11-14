@@ -22,7 +22,10 @@ Route::get('/smart-bins/{id}', 'Api\SmartBinsController@show');
 
 Route::get('/power-sensors', 'Api\PowerSensorsController@index');
 Route::get('/power-sensors/{id}', 'Api\PowerSensorsController@show');
+
 Route::get('/power-sensors/{power_sensor_id}/logs', 'Api\PowerSensorLogsController@show');
 
 Route::get('/power-sensor-logs', 'Api\PowerSensorLogsController@index');
 Route::get('/power-sensor-logs/latest', 'Api\PowerSensorLogsController@latest');
+
+Route::get('/power-sensor-kwh-logs', 'Api\PowerSensorLogsController@indexByKwH');
