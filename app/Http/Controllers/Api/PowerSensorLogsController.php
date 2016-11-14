@@ -1,9 +1,8 @@
 <?php
 namespace App\Http\Controllers\Api;
 use App\Http\Requests;
-use App\Transformers\PowerSensorLogTransformer;
 use App\PowerSensorLog;
-use Illuminate\Http\Request;
+use App\Transformers\PowerSensorLogTransformer;
 
 class PowerSensorLogsController extends ApiController
 {
@@ -12,34 +11,43 @@ class PowerSensorLogsController extends ApiController
     {
         $this->powerSensorLogTransformer = $powerSensorLogTransformer;
     }
+
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
+        return $this->respond(fractal()->collection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->get(), $this->powerSensorLogTransformer));
+
+        //return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function latest() {
 
         $powerSensorLog = PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->first();
 
         return $this->respond(fractal()->item($powerSensorLog, $this->powerSensorLogTransformer));
     }
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $power_sensor_id
-     * @return \Illuminate\Http\Response
+     * @param $power_sensor_id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($power_sensor_id)
     {
-        $powerSensorLogsPaginator = PowerSensorLog::where('power_sensor_id', '=', $power_sensor_id)
-            ->orderBy('measurement_taken_datetime', 'desc')->paginate();
 
-        return $this->respondWithPaginatedCollection($powerSensorLogsPaginator, $this->powerSensorLogTransformer);
+        $powerSensorLogs = PowerSensorLog::where('power_sensor_id', '=', $power_sensor_id);
+
+        return $this->respond(fractal()->collection($powerSensorLogs->orderBy('measurement_taken_datetime', 'desc')->get(), $this->powerSensorLogTransformer));
+
+
+//        $powerSensorLogsPaginator = $powerSensorLogs->orderBy('measurement_taken_datetime', 'desc')->paginate();
+
+//        return $this->respondWithPaginatedCollection($powerSensorLogsPaginator, $this->powerSensorLogTransformer);
 
     }
 }
