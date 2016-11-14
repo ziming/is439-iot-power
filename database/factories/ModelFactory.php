@@ -21,22 +21,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
 $factory->define(App\PowerSensor::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->company,
-        'port' =>  $faker->randomElement(['D1', 'D2', 'D3', 'D4']),
-        'smart_bin_id' =>  function () {
-//             return factory(App\SmartBin::class)->create()->id;
-            return rand(1, 10);
-        } ,
+        'port' => $faker->randomElement(['A1', 'A2', 'A3', 'A4']),
+        'smart_bin_id' => rand(2, 10)
     ];
 });
 
 $factory->define(App\PowerSensorLog::class, function (Faker\Generator $faker) {
     return [
-        'power_sensor_id' => rand(1, 50),
+        'power_sensor_id' => rand(1, 3),
         'measurement_taken_datetime' => $faker->dateTimeBetween('-1 years', 'now'),
-        'amp_value' => $faker->randomFloat(4, 0, 999)
+
+        // 0 to 5
+        'amp_value' => $faker->randomFloat(4, 0, 5)
     ];
 });
 
@@ -47,4 +47,3 @@ $factory->define(App\SmartBin::class, function (Faker\Generator $faker) {
         'longitude' =>  $faker->longitude ,
     ];
 });
-
