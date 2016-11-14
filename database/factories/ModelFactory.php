@@ -33,7 +33,7 @@ $factory->define(App\PowerSensor::class, function (Faker\Generator $faker) {
 $factory->define(App\PowerSensorLog::class, function (Faker\Generator $faker) {
     return [
         'power_sensor_id' => rand(1, 3),
-        'measurement_taken_datetime' => $faker->dateTimeBetween('-1 years', 'now'),
+        'measurement_taken_datetime' => $faker->dateTimeBetween('-1 months', 'now'),
 
         // 0 to 5
         'amp_value' => $faker->randomFloat(4, 0, 5)
