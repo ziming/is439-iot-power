@@ -26,7 +26,7 @@ $factory->define(App\PowerSensor::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->company,
         'port' => $faker->randomElement(['A1', 'A2', 'A3', 'A4']),
-        'smart_bin_id' => rand(2, 10)
+        'smart_bin_id' => 1
     ];
 });
 

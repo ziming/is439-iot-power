@@ -16,7 +16,7 @@ class PowerSensorsTableSeeder extends Seeder
             'smart_bin_id' => 1
         ]);
 
-        factory(App\PowerSensor::class, 50)->create();
+//        factory(App\PowerSensor::class, 50)->create();
 
 
     }

@@ -19,11 +19,12 @@ class CreatePowerSensorLogsTable extends Migration
             $table->integer('power_sensor_id')->unsigned();
             $table->foreign('power_sensor_id')->references('id')->on('power_sensors');
 
-            $table->timestamp('measurement_taken_datetime');
+            $table->timestamp('measurement_taken_datetime')->default(DB::raw('CURRENT_TIMESTAMP'));
 
-            $table->decimal('amp_value', 8, 4);
+            $table->decimal('amp_value', 20, 18);
 
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

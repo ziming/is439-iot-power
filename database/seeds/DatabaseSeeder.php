@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Database\Seeder;
+
 class DatabaseSeeder extends Seeder
 {
     private $tables = [
@@ -18,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->cleanDatabase();
         $this->call(SmartBinsTableSeeder::class);
         $this->call(PowerSensorsTableSeeder::class);
-        $this->call(PowerSensorLogsTableSeeder::class);
+//        $this->call(PowerSensorLogsTableSeeder::class);
     }
     private function cleanDatabase()
     {
