@@ -10,6 +10,6 @@ class PowerSensorLogsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\PowerSensorLog::class, 60 * 24 * 7 * 4)->create();
+        factory(App\PowerSensorLog::class, 60 * 24)->create();
     }
 }
