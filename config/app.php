@@ -171,9 +171,6 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
 
-
-
-
         /*
          * Application Service Providers...
          */
