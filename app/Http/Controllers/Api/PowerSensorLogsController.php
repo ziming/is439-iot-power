@@ -24,20 +24,20 @@ class PowerSensorLogsController extends ApiController
         //return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
     }
 
-    public function indexByKwH()
+    public function indexBywH()
     {
 
         #date = '2016-12-31'
 
-        $powerSensorKwHLogs = DB::table('power_sensor_logs')
-            ->select(DB::raw('power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, (AVG(amp_value) * 11 / 1000) AS KwH'))
+        $powerSensorwHLogs = DB::table('power_sensor_logs')
+            ->select(DB::raw('power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, (AVG(amp_value) * 11) AS wH'))
             ->groupBy('power_sensor_id', 'measurement_taken_date', 'measurement_taken_hour')
             ->orderBy('measurement_taken_date', 'desc')
             ->orderBy('measurement_taken_hour', 'desc')
             ->get();
 
-        $powerSensorKwHLogs = collect($powerSensorKwHLogs);
-        return response()->json($powerSensorKwHLogs);
+        $powerSensorwHLogs = collect($powerSensorwHLogs);
+        return response()->json($powerSensorwHLogs);
         //return $this->respond(fractal()->collection($powerSensorKwHLogs), $this->powerSensorLogTransformer);
     }
 
@@ -69,18 +69,18 @@ class PowerSensorLogsController extends ApiController
 
     }
 
-    public function showByKwH($power_sensor_id)
+    public function showBywH($power_sensor_id)
     {
 
-        $powerSensorKwHLogs = DB::table('power_sensor_logs')
-            ->select(DB::raw('power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, (AVG(amp_value) * 11 / 1000) AS KwH'))
+        $powerSensorwHLogs = DB::table('power_sensor_logs')
+            ->select(DB::raw('power_sensor_id, DATE(measurement_taken_datetime) AS measurement_taken_date, HOUR(measurement_taken_datetime) AS measurement_taken_hour, (AVG(amp_value) * 11) AS wH'))
             ->where('power_sensor_id', '=', $power_sensor_id)
             ->groupBy('power_sensor_id', 'measurement_taken_date', 'measurement_taken_hour')
             ->orderBy('measurement_taken_date', 'desc')
             ->orderBy('measurement_taken_hour', 'desc')
             ->get();
 
-        $powerSensorKwHLogs = collect($powerSensorKwHLogs);
-        return response()->json($powerSensorKwHLogs);
+        $powerSensorwHLogs = collect($powerSensorwHLogs);
+        return response()->json($powerSensorwHLogs);
     }
 }

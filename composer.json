@@ -10,8 +10,8 @@
         "barryvdh/laravel-cors": "^0.8.2",
         "spatie/laravel-fractal": "^2.0",
         "doctrine/dbal": "^2.5",
-      "fzaninotto/faker": "~1.4",
-      "consoletvs/charts": "^2.0"
+        "fzaninotto/faker": "~1.4",
+        "consoletvs/charts": "^2.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
