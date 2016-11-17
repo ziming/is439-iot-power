@@ -21,7 +21,9 @@ class PowerSensorLogsController extends ApiController
     {
 //        return $this->respond(fractal()->collection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->get(), $this->powerSensorLogTransformer));
 
-        return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(60 * 24), $this->powerSensorLogTransformer);
+        return $this->respondWithPaginatedCollection(
+            PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(1440),
+            $this->powerSensorLogTransformer);
     }
 
     public function indexBywH()
@@ -33,15 +35,15 @@ class PowerSensorLogsController extends ApiController
             ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 11) AS wH'))
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
             ->orderBy('measurement_taken_date_hour', 'desc')
-            ->get();
+            ->paginate(1440);
 
-        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
+//        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
 
-        return response()->json($powerSensorwHLogs);
+//        return response()->json($powerSensorwHLogs);
 
 //        $powerSensorwHLogs = collect($powerSensorwHLogs);
 
-//        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
+        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
     }
 
     /**
@@ -80,15 +82,15 @@ class PowerSensorLogsController extends ApiController
             ->where('power_sensor_id', '=', $power_sensor_id)
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
             ->orderBy('measurement_taken_date_hour', 'desc')
-            ->get();
+            ->paginate(1440);
 
-        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
+//        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
 
-        return response()->json($powerSensorwHLogs);
+//        return response()->json($powerSensorwHLogs);
 
 //        $powerSensorwHLogs = collect($powerSensorwHLogs);
 
-//        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
+        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
 
     }
 }
