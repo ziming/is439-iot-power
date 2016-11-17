@@ -21,7 +21,7 @@ class PowerSensorLogsController extends ApiController
     {
 //        return $this->respond(fractal()->collection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->get(), $this->powerSensorLogTransformer));
 
-        return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(), $this->powerSensorLogTransformer);
+        return $this->respondWithPaginatedCollection(PowerSensorLog::orderBy('measurement_taken_datetime', 'desc')->paginate(60 * 24), $this->powerSensorLogTransformer);
     }
 
     public function indexBywH()
