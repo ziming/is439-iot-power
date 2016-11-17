@@ -32,7 +32,7 @@ class PowerSensorLogsController extends ApiController
         #date = '2016-12-31'
 
         $powerSensorwHLogs = DB::table('power_sensor_logs')
-            ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 11) AS wH'))
+            ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 11.7) AS wH'))
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
             ->orderBy('measurement_taken_date_hour', 'desc')
             ->get();
@@ -80,7 +80,7 @@ class PowerSensorLogsController extends ApiController
     {
 
         $powerSensorwHLogs = DB::table('power_sensor_logs')
-            ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 11) AS wH'))
+            ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 11.7) AS wH'))
             ->where('power_sensor_id', '=', $power_sensor_id)
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
             ->orderBy('measurement_taken_date_hour', 'desc')
