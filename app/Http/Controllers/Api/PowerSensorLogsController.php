@@ -36,11 +36,12 @@ class PowerSensorLogsController extends ApiController
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
             ->orderBy('measurement_taken_date_hour', 'desc')
             ->get();
-//            ->paginate(1440);
+
+//        $powerSensorwHLogs = $this->customPaginate($powerSensorwHLogsQuery, $powerSensorwHLogsQuery->count(), 1440);
 
 
         $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
-
+//
         return response()->json($powerSensorwHLogs);
 
 //        $powerSensorwHLogs = collect($powerSensorwHLogs);

@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Response as IlluminateResponse;
+use Illuminate\Pagination\LengthAwarePaginator;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\TransformerAbstract;
+
 class ApiController extends Controller
 {
     protected $statusCode = 200;
@@ -101,4 +102,5 @@ class ApiController extends Controller
                 ->paginateWith(new IlluminatePaginatorAdapter($paginator))
         );
     }
+
 }
