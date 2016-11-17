@@ -10,6 +10,6 @@ class SmartBinsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\SmartBin::class, 1)->create();
+        factory(App\SmartBin::class, 10)->create();
     }
 }
