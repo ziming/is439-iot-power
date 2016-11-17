@@ -35,13 +35,13 @@ class PowerSensorLogsController extends ApiController
             ->orderBy('measurement_taken_date_hour', 'desc')
             ->get();
 
-//        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
+        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
 
-//        return response()->json($powerSensorwHLogs);
+        return response()->json($powerSensorwHLogs);
 
-        $powerSensorwHLogs = collect($powerSensorwHLogs);
+//        $powerSensorwHLogs = collect($powerSensorwHLogs);
 
-        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
+//        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
     }
 
     /**
@@ -82,9 +82,13 @@ class PowerSensorLogsController extends ApiController
             ->orderBy('measurement_taken_date_hour', 'desc')
             ->get();
 
-        $powerSensorwHLogs = collect($powerSensorwHLogs);
+        $powerSensorwHLogs = ['data' => $powerSensorwHLogs];
 
-        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
+        return response()->json($powerSensorwHLogs);
+
+//        $powerSensorwHLogs = collect($powerSensorwHLogs);
+
+//        return $this->respond(fractal()->collection($powerSensorwHLogs), $this->powerSensorLogTransformer);
 
     }
 }
