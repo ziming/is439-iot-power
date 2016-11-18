@@ -34,7 +34,7 @@ class PowerSensorLogsController extends ApiController
         $powerSensorwHLogs = DB::table('power_sensor_logs')
             ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 12) AS wH'))
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
-            ->orderBy('measurement_taken_date_hour', 'desc')
+            ->orderBy('measurement_taken_date_hour', 'asc')
             ->get();
 
 //        $powerSensorwHLogs = $this->customPaginate($powerSensorwHLogsQuery, $powerSensorwHLogsQuery->count(), 1440);
@@ -84,7 +84,7 @@ class PowerSensorLogsController extends ApiController
             ->select(DB::raw('power_sensor_id, DATE_FORMAT(measurement_taken_datetime, \'%Y-%m-%d %H:00\') as measurement_taken_date_hour, (AVG(amp_value) * 12) AS wH'))
             ->where('power_sensor_id', '=', $power_sensor_id)
             ->groupBy('power_sensor_id', 'measurement_taken_date_hour')
-            ->orderBy('measurement_taken_date_hour', 'desc')
+            ->orderBy('measurement_taken_date_hour', 'asc')
             ->get();
 //            ->paginate(1440);
 
