@@ -54,9 +54,16 @@ client.on('connect', function () { // When connected
 
                 // console.log(datetime);
                 // power_sensor_id,measurement_taken_datetime,amp_value
+
+                var amp_val = Number(message[1]);
+
+                amp_val = (amp_val < 0) ? 0 : amp_val;
+
+                // console.log(amp_val);
+
                 var power_sensor_log = {
                     power_sensor_id: message[0],
-                    amp_value: message[1],
+                    amp_value: amp_val
                     // measurement_taken_datetime: datetime,
                     // created_at: datetime,
                     // updated_at: datetime
